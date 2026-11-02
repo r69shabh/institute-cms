@@ -74,10 +74,10 @@ function seedInstitute() {
   }
   return {
     type: 'institute',
-    settings: { name: 'Shiksha Point Academy', tagline: 'JEE · NEET · Boards coaching', color: '#1f3a5f', phone: '+91 98100 00000', email: 'admissions@example.com',
-      address: 'Plot 12, Sector 7, Dwarka, New Delhi 110075 (demo address)', hours: 'Mon–Sat 9:00 AM – 8:30 PM', whatsapp: '',
-      heroTitle: 'Small batches. Serious results.', heroSub: 'Coaching for JEE, NEET and Class 10/12 boards with weekly tests, doubt sessions and progress reports for parents.',
-      stats: '12+ years|1,800+ students|30 max per batch', about: 'Shiksha Point Academy was started by a group of teachers who believed students learn best in small batches where every doubt gets answered. We publish progress after every test so parents always know where their child stands.',
+    settings: { name: 'Shiksha Point Academy', tagline: 'JEE · NEET · Boards coaching', color: '#1f3a5f', phone: '+91 98765 43210', email: 'admissions@shikshapoint.in',
+      address: 'Plot 12, Sector 7, Dwarka, New Delhi 110075', hours: 'Mon–Sat 9:00 AM – 8:30 PM', whatsapp: '',
+      heroImg: 'img/inst-hero.jpg', heroBadge: 'JEE 2028 batch starts 10 Nov|Only 8 seats left', heroTitle: 'Small batches. Serious results.', heroSub: 'Coaching for JEE, NEET and Class 10/12 boards with weekly tests, doubt sessions and progress reports for parents.',
+      stats: '12+ years of teaching|1,800+ students coached|142 JEE & NEET selections in 2026|30 students max per batch', about: 'Shiksha Point Academy was started by a group of teachers who believed students learn best in small batches where every doubt gets answered. We publish progress after every test so parents always know where their child stands.',
       receiptFooter: 'Fees once paid are subject to the institute policy. This is a computer-generated receipt.' },
     pages: [
       { id: 'pg1', title: 'About us', slug: 'about', show: true, body: 'Shiksha Point Academy was founded with one simple idea: a teacher should know every student by name.\n\nOur faculty includes IIT and NIT alumni and doctors who teach because they enjoy it. Every batch has a weekly test, and results go to parents the same evening.\n\nWhat makes us different\n• Batches capped at 30 students\n• Daily doubt counter from 2 PM to 8 PM\n• Printed notes and a test series included\n• Monthly parent–teacher meetings' },
@@ -86,9 +86,9 @@ function seedInstitute() {
     ],
     offerings, staff, people, bookings, payments, attendance,
     gallery: [
-      { id: 'g1', url: '', caption: 'Smart classroom', color: '#1f3a5f' }, { id: 'g2', url: '', caption: 'Physics lab', color: '#0f766e' },
-      { id: 'g3', url: '', caption: 'Library & self-study hall', color: '#7c3aed' }, { id: 'g4', url: '', caption: 'Toppers felicitation 2026', color: '#b45309' },
-      { id: 'g5', url: '', caption: 'Doubt-clearing counter', color: '#be123c' }, { id: 'g6', url: '', caption: 'Annual science fair', color: '#1d4ed8' }
+      { id: 'g1', url: 'img/inst-hero.jpg', caption: 'Small-batch classroom', color: '#1f3a5f' }, { id: 'g2', url: 'img/inst-g2.jpg', caption: 'Chemistry lab', color: '#0f766e' },
+      { id: 'g3', url: 'img/inst-g1.jpg', caption: 'Library & self-study hall', color: '#7c3aed' }, { id: 'g4', url: 'img/inst-g3.jpg', caption: 'Toppers felicitation 2026', color: '#b45309' },
+      { id: 'g5', url: 'img/inst-g4.jpg', caption: 'Doubt-clearing desk', color: '#be123c' }
     ],
     announcements: [
       { id: 'a1', title: 'Admissions open for 2027–28 batches', body: 'Scholarship test every Sunday at 11 AM. Up to 50% fee waiver for top scorers.', date: addDays(-2), pinned: true },
@@ -102,7 +102,19 @@ function seedInstitute() {
       { id: 'e4', name: 'Gaurav Sethi', phone: '9810098100', email: '', interest: 'Spoken English & Interview Skills', message: '', date: addDays(-5), status: 'Converted' },
       { id: 'e5', name: 'Nidhi Saxena', phone: '9711100099', email: 'nidhi@example.com', interest: 'Class 12 Commerce', message: 'Timings for evening batch?', date: addDays(-8), status: 'Closed' }
     ],
-    receiptSeq: rn
+    receiptSeq: rn,
+    v: 2,
+    features: [
+      { icon: 'users', title: '30 students per batch', body: 'Every student is known by name, and every doubt gets answered in class.' },
+      { icon: 'chart', title: 'Weekly tests, monthly reports', body: 'Parents get marks, rank and attendance after every test — no surprises at PTM.' },
+      { icon: 'chat', title: 'Doubt desk, 6 days a week', body: 'A teacher sits at the doubt desk from 3 PM to 8 PM. Walk in with any question.' },
+      { icon: 'award', title: 'Scholarship test every Sunday', body: 'Up to 50% fee waiver for top scorers, so ability matters more than budget.' }
+    ],
+    testimonials: [
+      { name: 'Meenakshi Iyer', role: 'Parent · Class 12, JEE 2026', body: 'The weekly report told us exactly where Aditya was slipping. He cleared JEE Advanced on the first attempt.' },
+      { name: 'Harsh Vardhan', role: 'Student · NEET 2026, 642/720', body: 'Dr. Qureshi’s biology diagrams are why I could revise the whole syllabus in the last month.' },
+      { name: 'Pooja Arora', role: 'Parent · Class 10 CBSE', body: 'Small batches made the difference. Riya went from 71% in pre-boards to 94% in the finals.' }
+    ]
   };
 }
 
@@ -135,10 +147,10 @@ function seedClinic() {
   bookings.filter(b => b.status === 'Completed').forEach((b, i) => { if (i % 6 === 3) return; payments.push({ id: uid(), personId: b.personId, bookingId: b.id, amount: b.fee, date: b.date, mode: ['UPI', 'Cash', 'Card'][i % 3], receiptNo: 'R-' + (rn++), note: '' }); });
   return {
     type: 'clinic',
-    settings: { name: 'CarePlus Family Clinic', tagline: 'Family medicine · Dental · Physio', color: '#0f766e', phone: '+91 98110 00000', email: 'appointments@example.com',
-      address: 'Shop 4, Central Market, Sector 12, Noida 201301 (demo address)', hours: 'Mon–Sat 9 AM – 1 PM, 5 – 9 PM · Sun 10 AM – 1 PM', whatsapp: '',
-      heroTitle: 'Your family doctor, right around the corner.', heroSub: 'General medicine, children’s care, dental and physiotherapy under one roof — book a visit in under a minute.',
-      stats: '15 years of care|20,000+ patients|Same-day appointments', about: 'CarePlus is a neighbourhood clinic run by experienced doctors. We keep waiting times short, explain every prescription, and keep your visit history so follow-ups are quick.',
+    settings: { name: 'CarePlus Family Clinic', tagline: 'Family medicine · Dental · Physio', color: '#0f766e', phone: '+91 98765 01234', email: 'care@careplusclinic.in',
+      address: 'Shop 4, Central Market, Sector 12, Noida 201301', hours: 'Mon–Sat 9 AM – 1 PM, 5 – 9 PM · Sun 10 AM – 1 PM', whatsapp: '',
+      heroImg: 'img/clinic-hero.jpg', heroBadge: 'Evening slots open today|From 5:00 PM', heroTitle: 'Your family doctor, right around the corner.', heroSub: 'General medicine, children’s care, dental and physiotherapy under one roof — book a visit in under a minute.',
+      stats: '15+ years of family care|20,000+ patients treated|4 specialists under one roof|6 days a week, mornings & evenings', about: 'CarePlus is a neighbourhood clinic run by experienced doctors. We keep waiting times short, explain every prescription, and keep your visit history so follow-ups are quick.',
       receiptFooter: 'Thank you for visiting. This is a computer-generated receipt.' },
     pages: [
       { id: 'pg1', title: 'About the clinic', slug: 'about', show: true, body: 'CarePlus Family Clinic has served the neighbourhood since 2011.\n\n• Digital records — your history is ready at every visit\n• In-house sample collection for lab tests\n• Wheelchair accessible, ground floor\n\n(Demo content — replace with your own.)' },
@@ -146,8 +158,9 @@ function seedClinic() {
     ],
     offerings, staff, people, bookings, payments, attendance: {},
     gallery: [
-      { id: 'g1', url: '', caption: 'Reception & waiting area', color: '#0f766e' }, { id: 'g2', url: '', caption: 'Consultation room', color: '#1d4ed8' },
-      { id: 'g3', url: '', caption: 'Dental chair', color: '#7c3aed' }, { id: 'g4', url: '', caption: 'Physiotherapy studio', color: '#b45309' }
+      { id: 'g1', url: 'img/clinic-g1.jpg', caption: 'Reception & waiting area', color: '#0f766e' }, { id: 'g2', url: 'img/clinic-hero.jpg', caption: 'Consultation room', color: '#1d4ed8' },
+      { id: 'g3', url: 'img/clinic-g2.jpg', caption: 'Children’s care', color: '#be123c' }, { id: 'g4', url: 'img/clinic-g3.jpg', caption: 'Dental suite', color: '#7c3aed' },
+      { id: 'g5', url: 'img/clinic-g4.jpg', caption: 'Physiotherapy studio', color: '#b45309' }
     ],
     announcements: [
       { id: 'a1', title: 'Free BP & sugar check camp this Sunday', body: '10 AM – 1 PM. No appointment needed.', date: addDays(-1), pinned: true },
@@ -158,7 +171,19 @@ function seedClinic() {
       { id: 'e2', name: 'Shalini Roy', phone: '9899988877', email: 'shalini@example.com', interest: 'Full body health check', message: 'For my parents, both 60+. Is fasting needed?', date: addDays(-1), status: 'New' },
       { id: 'e3', name: 'Imran Ali', phone: '9717171717', email: '', interest: 'Dental cleaning & check-up', message: '', date: addDays(-3), status: 'Contacted' }
     ],
-    receiptSeq: rn
+    receiptSeq: rn,
+    v: 2,
+    features: [
+      { icon: 'clock', title: 'Short waits, on-time slots', body: 'Book a time and walk straight in. Average wait last month: 9 minutes.' },
+      { icon: 'file', title: 'Your records, always ready', body: 'Every visit, prescription and report is saved, so follow-ups take minutes.' },
+      { icon: 'heart', title: 'Gentle with children', body: 'A paediatrician on site six days a week, with a vaccination reminder service.' },
+      { icon: 'flask', title: 'Lab tests in-house', body: 'Sample collection at the clinic, reports on WhatsApp or email the same day.' }
+    ],
+    testimonials: [
+      { name: 'Anil Khurana', role: 'Patient since 2019', body: 'Dr. Sharma explains every medicine and never rushes. My sugar has been under control for two years.' },
+      { name: 'Ritika Sen', role: 'Mother of a 4-year-old', body: 'Dr. Menon is wonderful with kids. The vaccination reminders alone are worth it.' },
+      { name: 'Col. R. S. Bhalla (retd.)', role: 'Physiotherapy patient', body: 'Six sessions with Dr. Gill and I am walking without the knee brace again.' }
+    ]
   };
 }
 
@@ -171,7 +196,7 @@ function load(type) {
   type = type || curType();
   let d = null;
   try { d = JSON.parse(localStorage.getItem('icms:data:' + type)); } catch (e) { d = null; }
-  if (!d || !d.settings) { d = type === 'clinic' ? seedClinic() : seedInstitute(); localStorage.setItem('icms:data:' + type, JSON.stringify(d)); }
+  if (!d || !d.settings || d.v !== 2) { d = type === 'clinic' ? seedClinic() : seedInstitute(); localStorage.setItem('icms:data:' + type, JSON.stringify(d)); }
   S = d; return d;
 }
 function save() { localStorage.setItem('icms:data:' + S.type, JSON.stringify(S)); }
@@ -345,19 +370,19 @@ function recordPayment(prefill = {}) {
 
 /* ---------------- admin views ---------------- */
 const NAV = () => [
-  ['Overview', [['dashboard', '▦', 'Dashboard'], ['enquiries', '✉', 'Enquiries', S.enquiries.filter(e => e.status === 'New').length]]],
-  ['Website', [['website', '◧', 'Website editor'], ['offerings', '☰', L().offerings], ['staff', '☺', L().staff], ['gallery', '▣', 'Gallery'], ['announcements', '📣', 'Announcements'], ['pages', '▤', 'Pages']]],
-  [S.type === 'institute' ? 'Academics' : 'Patients', [['people', '👥', L().people], ['bookings', '🗓', L().bookings], ...(S.type === 'institute' ? [['attendance', '✓', 'Attendance']] : []), ['payments', '₹', 'Fees & payments']]],
-  ['System', [['settings', '⚙', 'Settings & backup']]]
+  ['Overview', [['dashboard', 'grid', 'Dashboard'], ['enquiries', 'inbox', 'Enquiries', S.enquiries.filter(e => e.status === 'New').length]]],
+  ['Website', [['website', 'layout', 'Website editor'], ['offerings', 'book', L().offerings], ['staff', 'users', L().staff], ['gallery', 'image', 'Gallery'], ['announcements', 'megaphone', 'Announcements'], ['pages', 'pages', 'Pages']]],
+  [S.type === 'institute' ? 'Academics' : 'Patients', [['people', 'users', L().people], ['bookings', S.type === 'institute' ? 'clipboard' : 'calendar', L().bookings], ...(S.type === 'institute' ? [['attendance', 'checksq', 'Attendance']] : []), ['payments', 'rupee', 'Fees & payments']]],
+  ['System', [['settings', 'sliders', 'Settings & backup']]]
 ];
 
 function shell(route, title, inner, actions = '') {
-  return `<div class="shell"><aside class="side" id="side">
+  return `<div class="shell" style="--brand:${esc(S.settings.color)};--brand-2:color-mix(in srgb,${esc(S.settings.color)} 12%,#fff)"><aside class="side" id="side">
     <div class="brand"><div class="logo" style="background:${esc(S.settings.color)}">${esc(initials(S.settings.name))}</div><div>${esc(S.settings.name)}<small>${esc(L().kind)} admin</small></div></div>
-    ${NAV().map(([g, items]) => `<div class="nav-group">${esc(g)}</div>${items.map(([r, ic, t, n]) => `<a class="nav ${route === r ? 'active' : ''}" href="#/${r}"><span class="ic">${ic}</span>${esc(t)}${n ? `<span class="badge">${n}</span>` : ''}</a>`).join('')}`).join('')}
-    <div class="nav-group">Public</div><a class="nav" href="#/site" target="_blank" rel="noopener"><span class="ic">↗</span>Open live website</a>
+    ${NAV().map(([g, items]) => `<div class="nav-group">${esc(g)}</div>${items.map(([r, ic, t, n]) => `<a class="nav ${route === r ? 'active' : ''}" href="#/${r}"><span class="ic">${icon(ic)}</span>${esc(t)}${n ? `<span class="badge">${n}</span>` : ''}</a>`).join('')}`).join('')}
+    <div class="nav-group">Public</div><a class="nav" href="#/site" target="_blank" rel="noopener"><span class="ic">${icon('ext')}</span>Open live website</a>
   </aside><div class="main">
-  <div class="demo-banner">Demo — everything is saved only in this browser. Try editing the website, adding a ${esc(L().person.toLowerCase())} or recording a payment. Built by <a href="https://r69shabh.me" target="_blank" rel="noopener">Rishabh Gusain</a>.</div>
+  <div class="demo-banner"><span><b>Demo admin</b><span class="db-long"> — try adding a ${esc(L().person.toLowerCase())}, recording a payment or editing the website. Changes stay in this browser.</span></span><a class="db-site" href="#/site">View the website →</a></div>
   <div class="topbar"><button class="btn menu-btn" id="menu" aria-label="Menu">☰</button><h1>${esc(title)}</h1>${actions}</div>
   <div class="content">${inner}</div></div></div>`;
 }
@@ -391,10 +416,14 @@ function vDashboard() {
   <div class="card" style="margin-top:16px"><div class="card-h"><h2>Pending fees</h2><button class="btn sm primary" id="rec-pay">+ Record payment</button></div>
     ${dues.length ? `<div class="table-wrap"><table><thead><tr><th>${esc(L().person)}</th><th class="hide-m">Phone</th><th class="right">Billed</th><th class="right">Paid</th><th class="right">Due</th><th></th></tr></thead><tbody>
     ${dues.slice(0, 8).map(({ p, d }) => `<tr class="click" data-go="#/people/${p.id}"><td><b>${esc(p.name)}</b></td><td class="hide-m">${esc(p.phone)}</td><td class="right">${inr(chargesFor(p.id))}</td><td class="right">${inr(paidFor(p.id))}</td><td class="right"><b style="color:var(--warn)">${inr(d)}</b></td><td class="right"><button class="btn sm" data-pay="${p.id}" data-amt="${d}">Collect</button></td></tr>`).join('')}
-    </tbody></table></div>` : `<div class="empty">All fees are cleared 🎉</div>`}</div>`,
+    </tbody></table></div>` : (S.people.length ? `<div class="empty">All fees are cleared. Nothing pending.</div>` : emptyState('rupee', 'No pending fees', 'Once you add ' + L().people.toLowerCase() + ' and their ' + L().bookings.toLowerCase() + ', anything unpaid shows up here.', 0))}</div>`,
   `<a class="btn hide-m" href="#/site" target="_blank" rel="noopener">View website ↗</a>`);
 }
 
+function emptyState(ic, title, sub, any) {
+  if (any) return `<div class="empty">Nothing matches your search or filter.</div>`;
+  return `<div class="empty es"><span class="es-ic">${icon(ic)}</span><b>${esc(title)}</b><span>${esc(sub)}</span></div>`;
+}
 function listToolbar(placeholder, addLabel, extra = '') {
   return `<div class="row" style="margin-bottom:12px"><input type="search" class="search" id="q" placeholder="${esc(placeholder)}" value="${esc(VIEW.q || '')}">${extra}<span class="spacer"></span>${addLabel ? `<button class="btn primary" id="add">${esc(addLabel)}</button>` : ''}</div>`;
 }
@@ -408,7 +437,7 @@ function vEnquiries() {
   ${rows.length ? `<div class="table-wrap"><table><thead><tr><th>Date</th><th>Name</th><th>Interested in</th><th class="hide-m">Message</th><th>Status</th><th></th></tr></thead><tbody>
   ${rows.map(e => `<tr><td class="nowrap">${fmtDate(e.date)}</td><td><b>${esc(e.name)}</b><div class="small"><a href="tel:${esc(e.phone)}">${esc(e.phone)}</a>${e.email ? ` · ${esc(e.email)}` : ''}</div></td><td>${esc(e.interest)}</td><td class="hide-m small muted">${esc(e.message)}</td>
   <td><select data-enq-status="${e.id}" style="width:auto;padding:4px 6px">${['New', 'Contacted', 'Converted', 'Closed'].map(s => `<option ${s === e.status ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
-  <td class="right nowrap"><button class="btn sm" data-convert="${e.id}" title="Create ${esc(L().person.toLowerCase())} from enquiry">→ ${esc(L().person)}</button> <button class="btn sm" data-edit-enq="${e.id}">Edit</button></td></tr>`).join('')}</tbody></table></div>` : `<div class="empty">No enquiries match.</div>`}</div>`);
+  <td class="right nowrap"><button class="btn sm" data-convert="${e.id}" title="Create ${esc(L().person.toLowerCase())} from enquiry">→ ${esc(L().person)}</button> <button class="btn sm" data-edit-enq="${e.id}">Edit</button></td></tr>`).join('')}</tbody></table></div>` : emptyState('inbox', 'No enquiries yet', 'When someone fills the enquiry form on your website, it lands here with their name, number and interest.', S.enquiries.length)}</div>`);
 }
 
 function vOfferings() {
@@ -416,13 +445,13 @@ function vOfferings() {
   return shell('offerings', L().offerings, `<div class="card">${listToolbar('Search…', '+ Add ' + L().offering.toLowerCase())}
   <div class="table-wrap"><table><thead><tr><th>${esc(L().offering)}</th>${S.type === 'institute' ? '<th class="hide-m">Schedule</th><th>Enrolled</th>' : '<th>Duration</th><th>Visits</th>'}<th class="right">Fee</th><th>Status</th></tr></thead><tbody>
   ${rows.map(o => { const n = S.bookings.filter(b => b.offeringId === o.id && (S.type === 'institute' ? b.status === 'Active' : b.status === 'Completed')).length;
-    return `<tr class="click" data-edit-off="${o.id}"><td><b>${esc(o.name)}</b><div class="small muted">${esc(o.desc)}</div></td>${S.type === 'institute' ? `<td class="hide-m small">${esc((o.days || '').replace(/,/g, ', '))}<br>${fmtTime(o.start)} – ${fmtTime(o.end)}</td><td>${n}${o.seats ? ' / ' + o.seats : ''}</td>` : `<td>${esc(o.duration)}</td><td>${n}</td>`}<td class="right nowrap"><b>${inr(o.fee)}</b>${o.duration && S.type === 'institute' ? `<div class="small muted">${esc(o.duration)}</div>` : ''}</td><td>${o.active ? statusPill('Active') : '<span class="pill">Hidden</span>'}</td></tr>`; }).join('')}
+    return `<tr class="click" data-edit-off="${o.id}"><td><b>${esc(o.name)}</b><div class="small muted">${esc(o.desc)}</div></td>${S.type === 'institute' ? `<td class="hide-m small">${esc((o.days || '').replace(/,/g, ', '))}<br>${fmtTime(o.start)} – ${fmtTime(o.end)}</td><td>${n}${o.seats ? ' / ' + o.seats : ''}</td>` : `<td>${esc(o.duration)}</td><td>${n}</td>`}<td class="right nowrap"><b>${inr(o.fee)}</b>${o.duration && S.type === 'institute' ? `<div class="small muted">${esc(o.duration)}</div>` : ''}</td><td>${o.active ? statusPill('Active') : '<span class="pill">Hidden</span>'}</td></tr>`; }).join('') || `<tr><td colspan="5">${emptyState('book', 'No ' + L().offerings.toLowerCase() + ' yet', 'Add your first ' + L().offering.toLowerCase() + ' with its fee and timings. It appears on your website instantly.', S.offerings.length)}</td></tr>`}
   </tbody></table></div></div>`);
 }
 
 function vStaff() {
   return shell('staff', L().staff, `<div class="card">${listToolbar('Search…', '+ Add ' + L().staffOne.toLowerCase())}
-  <div class="grid g3">${S.staff.filter(s => match(s, VIEW.q)).map(s => `<div class="card" style="margin:0;cursor:pointer" data-edit-staff="${s.id}"><div class="row"><div class="avatar" style="background:${colorFor(s.name)}">${esc(initials(s.name))}</div><div><b>${esc(s.name)}</b><div class="small muted">${esc(s.role)}</div></div></div><p class="small" style="margin:10px 0 0">${esc(s.bio)}</p></div>`).join('') || '<div class="empty">None yet.</div>'}</div></div>`);
+  <div class="grid g3">${S.staff.filter(s => match(s, VIEW.q)).map(s => `<div class="card" style="margin:0;cursor:pointer" data-edit-staff="${s.id}"><div class="row"><div class="avatar" style="background:${colorFor(s.name)}">${esc(initials(s.name))}</div><div><b>${esc(s.name)}</b><div class="small muted">${esc(s.role)}</div></div></div><p class="small" style="margin:10px 0 0">${esc(s.bio)}</p></div>`).join('') || emptyState('users', 'No ' + L().staff.toLowerCase() + ' profiles yet', 'Add a profile and it appears on your website straight away.', S.staff.length)}</div></div>`);
 }
 
 function galTile(g, h) { return g.url ? `<div class="tile" style="background-image:url('${esc(g.url)}');${h ? 'height:' + h : ''}"></div>` : `<div class="tile" style="background:linear-gradient(135deg,${esc(g.color || COLORS[0])},${esc(g.color || COLORS[0])}cc);${h ? 'height:' + h : ''}">${esc(g.caption)}</div>`; }
@@ -434,7 +463,7 @@ function vGallery() {
 function vAnnouncements() {
   const rows = [...S.announcements].sort((a, b) => (b.pinned - a.pinned) || b.date.localeCompare(a.date));
   return shell('announcements', 'Announcements', `<div class="card">${listToolbar('Search…', '+ New announcement')}
-  ${rows.filter(a => match(a, VIEW.q)).map(a => `<div class="list-item" style="cursor:pointer" data-edit-ann="${a.id}"><div style="flex:1"><b>${esc(a.title)}</b> ${a.pinned ? '<span class="pill info">Top bar</span>' : ''}<div class="small muted">${fmtDate(a.date)}</div><div class="small">${esc(a.body)}</div></div><span class="btn sm">Edit</span></div>`).join('') || '<div class="empty">No announcements.</div>'}</div>`);
+  ${rows.filter(a => match(a, VIEW.q)).map(a => `<div class="list-item" style="cursor:pointer" data-edit-ann="${a.id}"><div style="flex:1"><b>${esc(a.title)}</b> ${a.pinned ? '<span class="pill info">Top bar</span>' : ''}<div class="small muted">${fmtDate(a.date)}</div><div class="small">${esc(a.body)}</div></div><span class="btn sm">Edit</span></div>`).join('') || emptyState('megaphone', 'No announcements yet', 'Post holidays, new batches or test dates. Pin one to show it in the website’s top bar.', 0)}</div>`);
 }
 
 function vPages() {
@@ -450,7 +479,7 @@ function vPeople() {
   <div class="table-wrap"><table><thead><tr><th>Name</th><th class="hide-m">${esc(L().guardian)}</th><th>${S.type === 'institute' ? 'Course' : 'Last visit'}</th>${S.type === 'institute' ? '<th class="hide-m">Attendance</th>' : ''}<th class="right">Due</th></tr></thead><tbody>
   ${rows.map(p => { const bks = S.bookings.filter(b => b.personId === p.id); const d = dueFor(p.id); const a = attStats(p.id);
     const second = S.type === 'institute' ? bks.filter(b => b.status === 'Active').map(b => (byId('offerings', b.offeringId) || {}).name).join(', ') : (() => { const last = bks.filter(b => b.status === 'Completed').sort((x, y) => y.date.localeCompare(x.date))[0]; return last ? fmtDate(last.date) : '—'; })();
-    return `<tr class="click" data-go="#/people/${p.id}"><td><div class="row" style="flex-wrap:nowrap"><div class="avatar" style="background:${colorFor(p.name)}">${esc(initials(p.name))}</div><div><b>${esc(p.name)}</b><div class="small muted">${esc(p.phone)}</div></div></div></td><td class="hide-m small">${esc(p.guardian)}</td><td class="small">${esc(second)}</td>${S.type === 'institute' ? `<td class="hide-m" style="min-width:110px">${a.pct != null ? `<div class="bar"><i style="width:${a.pct}%"></i></div><span class="small muted">${a.pct}%</span>` : '—'}</td>` : ''}<td class="right">${d ? `<b style="color:var(--warn)">${inr(d)}</b>` : statusPill('Paid')}</td></tr>`; }).join('') || '<tr><td colspan="5" class="empty">No matches.</td></tr>'}
+    return `<tr class="click" data-go="#/people/${p.id}"><td><div class="row" style="flex-wrap:nowrap"><div class="avatar" style="background:${colorFor(p.name)}">${esc(initials(p.name))}</div><div><b>${esc(p.name)}</b><div class="small muted">${esc(p.phone)}</div></div></div></td><td class="hide-m small">${esc(p.guardian)}</td><td class="small">${esc(second)}</td>${S.type === 'institute' ? `<td class="hide-m" style="min-width:110px">${a.pct != null ? `<div class="bar"><i style="width:${a.pct}%"></i></div><span class="small muted">${a.pct}%</span>` : '—'}</td>` : ''}<td class="right">${d ? `<b style="color:var(--warn)">${inr(d)}</b>` : statusPill('Paid')}</td></tr>`; }).join('') || `<tr><td colspan="5">${emptyState('users', 'No ' + L().people.toLowerCase() + ' yet', 'Add one with the button above, or convert an enquiry in one click.', S.people.length)}</td></tr>`}
   </tbody></table></div></div>`);
 }
 
@@ -489,7 +518,7 @@ function vBookings() {
   return shell('bookings', L().bookings, `<div class="card">${listToolbar('Search…', S.type === 'institute' ? '+ New enrolment' : '+ Book appointment', `<select id="filt" style="width:auto">${statuses.map(s => `<option ${s === st ? 'selected' : ''}>${s}</option>`).join('')}</select>`)}
   <div class="table-wrap"><table><thead><tr>${S.type === 'clinic' ? '<th>When</th>' : '<th>Start</th>'}<th>${esc(L().person)}</th><th>${esc(L().offering)}</th>${S.type === 'clinic' ? '<th class="hide-m">Doctor</th>' : ''}<th class="right">Fee</th><th>Status</th><th></th></tr></thead><tbody>
   ${rows.map(b => { const p = byId('people', b.personId) || {}; const o = byId('offerings', b.offeringId) || {};
-    return `<tr><td class="nowrap">${S.type === 'clinic' ? `${fmtDate(b.date)}<div class="small muted">${fmtTime(b.time)}</div>` : fmtDate(b.start)}</td><td><a href="#/people/${p.id}"><b>${esc(p.name)}</b></a></td><td class="small">${esc(o.name)}</td>${S.type === 'clinic' ? `<td class="hide-m small">${esc((byId('staff', b.staffId) || {}).name || '')}</td>` : ''}<td class="right">${inr(b.fee)}</td><td>${statusPill(b.status)}</td><td class="right nowrap">${S.type === 'clinic' && b.status === 'Booked' ? `<button class="btn sm" data-complete="${b.id}">Done</button> ` : ''}<button class="btn sm" data-edit-bk="${b.id}">Edit</button></td></tr>`; }).join('') || '<tr><td colspan="7" class="empty">Nothing here.</td></tr>'}
+    return `<tr><td class="nowrap">${S.type === 'clinic' ? `${fmtDate(b.date)}<div class="small muted">${fmtTime(b.time)}</div>` : fmtDate(b.start)}</td><td><a href="#/people/${p.id}"><b>${esc(p.name)}</b></a></td><td class="small">${esc(o.name)}</td>${S.type === 'clinic' ? `<td class="hide-m small">${esc((byId('staff', b.staffId) || {}).name || '')}</td>` : ''}<td class="right">${inr(b.fee)}</td><td>${statusPill(b.status)}</td><td class="right nowrap">${S.type === 'clinic' && b.status === 'Booked' ? `<button class="btn sm" data-complete="${b.id}">Done</button> ` : ''}<button class="btn sm" data-edit-bk="${b.id}">Edit</button></td></tr>`; }).join('') || `<tr><td colspan="7">${emptyState('calendar', 'No ' + L().bookings.toLowerCase() + ' yet', 'Create one with the button above. It will show up on the dashboard on the day.', S.bookings.length)}</td></tr>`}
   </tbody></table></div></div>`);
 }
 
@@ -524,7 +553,7 @@ function vPayments() {
   <div class="card kpi"><div class="lbl">Outstanding</div><div class="val" style="color:var(--warn)">${inr(totalDue)}</div><div class="sub"><a href="#/dashboard">See who owes</a></div></div></div>
   <div class="card" style="margin-top:16px">${listToolbar('Search by name, receipt no…', '+ Record payment', `<button class="btn" id="csv">⬇ Export CSV</button>`)}
   <div class="table-wrap"><table><thead><tr><th>Date</th><th>Receipt</th><th>${esc(L().person)}</th><th>Mode</th><th class="right">Amount</th><th></th></tr></thead><tbody>
-  ${rows.map(x => { const p = byId('people', x.personId) || {}; return `<tr><td class="nowrap">${fmtDate(x.date)}</td><td>${esc(x.receiptNo)}</td><td><a href="#/people/${p.id}">${esc(p.name)}</a>${x.note ? `<div class="small muted">${esc(x.note)}</div>` : ''}</td><td>${esc(x.mode)}</td><td class="right"><b>${inr(x.amount)}</b></td><td class="right nowrap"><button class="btn sm" data-receipt="${x.id}">Receipt</button> <button class="btn sm danger" data-del-pay="${x.id}" aria-label="Delete">✕</button></td></tr>`; }).join('') || '<tr><td colspan="6" class="empty">No payments.</td></tr>'}
+  ${rows.map(x => { const p = byId('people', x.personId) || {}; return `<tr><td class="nowrap">${fmtDate(x.date)}</td><td>${esc(x.receiptNo)}</td><td><a href="#/people/${p.id}">${esc(p.name)}</a>${x.note ? `<div class="small muted">${esc(x.note)}</div>` : ''}</td><td>${esc(x.mode)}</td><td class="right"><b>${inr(x.amount)}</b></td><td class="right nowrap"><button class="btn sm" data-receipt="${x.id}">Receipt</button> <button class="btn sm danger" data-del-pay="${x.id}" aria-label="Delete">✕</button></td></tr>`; }).join('') || `<tr><td colspan="6">${emptyState('rupee', 'No payments recorded yet', 'Record a UPI, cash or card payment and a printable receipt is created automatically.', S.payments.length)}</td></tr>`}
   </tbody></table></div></div>`);
 }
 
@@ -540,6 +569,8 @@ function vWebsite() {
         <span class="small muted">Brand colour</span><div class="swatches" style="margin-top:4px">${PALETTE.map(c => `<button type="button" data-color="${c}" class="${c === st.color ? 'on' : ''}" style="background:${c}" aria-label="${c}"></button>`).join('')}<input type="color" name="color" value="${esc(st.color)}" style="width:34px;height:30px;padding:0;border:0;background:none" aria-label="Custom colour"></div>
         <label class="f"><span>Headline</span><input type="text" name="heroTitle" value="${esc(st.heroTitle)}"></label>
         <label class="f"><span>Sub-heading</span><textarea name="heroSub" style="min-height:70px">${esc(st.heroSub)}</textarea></label>
+        <label class="f"><span>Hero photo (image link)</span><input type="text" name="heroImg" value="${esc(st.heroImg || '')}" placeholder="https://… or leave blank to use the first gallery photo"></label>
+        <label class="f"><span>Hero badge (headline | small line)</span><input type="text" name="heroBadge" value="${esc(st.heroBadge || '')}" placeholder="New batch starts 10 Nov | 8 seats left"></label>
         <label class="f"><span>Highlights (separate with |)</span><input type="text" name="stats" value="${esc(st.stats)}"></label>
         <label class="f"><span>About (homepage)</span><textarea name="about">${esc(st.about)}</textarea></label>
         <div class="form-grid"><label class="f"><span>Phone</span><input type="text" name="phone" value="${esc(st.phone)}"></label><label class="f"><span>WhatsApp (optional)</span><input type="text" name="whatsapp" value="${esc(st.whatsapp || '')}" placeholder="91XXXXXXXXXX"></label></div>
@@ -568,53 +599,111 @@ function vSettings() {
   </div>`);
 }
 
+/* ---------------- icons ---------------- */
+const IC = {
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+  chat: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+  award: '<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/>',
+  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  flask: '<path d="M9 3h6"/><path d="M10 3v6.5L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9.5V3"/><path d="M7 15h10"/>',
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+  pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  calendar: '<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  star: '<path fill="currentColor" stroke="none" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+  menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  megaphone: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+  book: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+  grid: '<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
+  inbox: '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+  layout: '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/>',
+  image: '<rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/>',
+  pages: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/>',
+  rupee: '<path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3a5 5 0 0 0 0-10"/>',
+  sliders: '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',
+  checksq: '<path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  clipboard: '<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+  ext: '<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+  sparkle: '<path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z"/>'
+};
+const icon = (n, cls = '') => `<svg class="i ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n] || IC.sparkle}</svg>`;
+
 /* ---------------- public website ---------------- */
 function siteHTML(sub, embed) {
-  const st = S.settings; const lb = L();
+  const st = S.settings; const lb = L(); const inst = S.type === 'institute';
   const pinned = S.announcements.filter(a => a.pinned).sort((a, b) => b.date.localeCompare(a.date))[0];
   const menuPages = S.pages.filter(p => p.show);
   const base = embed ? '#/site?embed=1' : '#/site';
   const pageLink = slug => embed ? `#/site/page/${slug}?embed=1` : `#/site/page/${slug}`;
   const anchor = id => `${base}${embed ? '&' : '?'}s=${id}`;
-  const stats = (st.stats || '').split('|').map(s => s.trim()).filter(Boolean).map(s => { const m = s.match(/^(\d\S*)\s+(.*)$/); return m ? `<div><b>${esc(m[1])}</b><span>${esc(m[2])}</span></div>` : `<div><b style="font-size:1.1rem;padding-top:.3rem">${esc(s)}</b></div>`; }).join('');
-  const header = `${embed ? '' : `<div class="site-demo-bar">Demo website built with Institute CMS · <a href="#/dashboard">Open the admin panel</a> · by <a href="https://r69shabh.me" target="_blank" rel="noopener">Rishabh Gusain</a></div>`}
-  ${pinned ? `<div class="ann"><div class="wrap"><span>📣</span><span><b>${esc(pinned.title)}</b> — ${esc(pinned.body)}</span></div></div>` : ''}
-  <header><div class="wrap hdr"><a class="nm" href="${base}"><span class="logo">${esc(initials(st.name))}</span>${esc(st.name)}</a>
-  <button class="menu-t" id="site-menu" aria-label="Menu">☰</button>
-  <nav class="links" id="site-links"><a href="${anchor('offerings')}">${esc(lb.offerings)}</a><a href="${anchor('staff')}">${esc(lb.staff)}</a><a href="${anchor('gallery')}">Gallery</a>${menuPages.map(p => `<a href="${pageLink(p.slug)}">${esc(p.title)}</a>`).join('')}<a class="cta" href="${anchor('contact')}">${S.type === 'institute' ? 'Enquire now' : 'Book a visit'}</a></nav></div></header>`;
-  const footer = `<footer><div class="wrap row"><div style="flex:1;min-width:220px"><b style="color:#fff">${esc(st.name)}</b><br>${esc(st.address)}<br><a href="tel:${esc(st.phone)}">${esc(st.phone)}</a> · <a href="mailto:${esc(st.email)}">${esc(st.email)}</a></div><div class="small">© ${new Date().getFullYear()} ${esc(st.name)}</div></div></footer>`;
+  const ctaTxt = inst ? 'Book a free demo class' : 'Book an appointment';
+  const stats = (st.stats || '').split('|').map(s => s.trim()).filter(Boolean).slice(0, 4).map(s => { const m = s.match(/^(\d\S*)\s+(.*)$/); return m ? `<div class="stat"><b>${esc(m[1])}</b><span>${esc(m[2])}</span></div>` : `<div class="stat"><b class="txt">${esc(s)}</b></div>`; }).join('');
+  const demo = embed ? '' : `<div class="demo-strip"><div class="wrap"><span class="ds-t"><b>Sample website</b><span class="hide-s"> — every word, photo and fee here is edited from a simple admin panel.</span></span><a class="ds-b" href="#/dashboard">Open the admin panel ${icon('arrow')}</a></div></div>`;
+  const header = `${demo}
+  ${pinned ? `<div class="ann"><div class="wrap">${icon('megaphone')}<span><b>${esc(pinned.title)}</b><span class="hide-s"> · ${esc(pinned.body)}</span></span></div></div>` : ''}
+  <header class="sh-hdr"><div class="wrap hdr"><a class="nm" href="${base}"><span class="logo">${esc(initials(st.name))}</span><span class="nm-t">${esc(st.name)}<small>${esc(st.tagline)}</small></span></a>
+  <button class="menu-t" id="site-menu" aria-label="Open menu" aria-expanded="false">${icon('menu')}</button>
+  <nav class="links" id="site-links" aria-label="Main"><a href="${anchor('offerings')}">${esc(lb.offerings)}</a><a href="${anchor('staff')}">${esc(lb.staff)}</a><a href="${anchor('gallery')}">Gallery</a>${menuPages.map(p => `<a href="${pageLink(p.slug)}">${esc(p.title)}</a>`).join('')}<a class="cta" href="${anchor('contact')}">${inst ? 'Enquire now' : 'Book a visit'}</a></nav></div></header>`;
+  const footer = `<footer class="s-foot"><div class="wrap fgrid">
+    <div><div class="nm light"><span class="logo">${esc(initials(st.name))}</span><span class="nm-t">${esc(st.name)}<small>${esc(st.tagline)}</small></span></div><p class="f-about">${esc((st.about || '').split('. ')[0])}.</p></div>
+    <div><h4>Explore</h4><a href="${anchor('offerings')}">${esc(lb.offerings)}</a><a href="${anchor('staff')}">${esc(lb.staff)}</a><a href="${anchor('gallery')}">Gallery</a>${menuPages.map(p => `<a href="${pageLink(p.slug)}">${esc(p.title)}</a>`).join('')}</div>
+    <div><h4>Visit us</h4><p>${esc(st.address)}</p><p><a href="tel:${esc(st.phone.replace(/\s/g, ''))}">${esc(st.phone)}</a><br><a href="mailto:${esc(st.email)}">${esc(st.email)}</a></p><p>${esc(st.hours)}</p></div>
+  </div><div class="wrap f-bot"><span>© ${new Date().getFullYear()} ${esc(st.name)}</span><span>Website & admin by Institute CMS</span></div></footer>`;
+  const mobileBar = embed ? '' : `<div class="m-bar"><a class="mb-call" href="tel:${esc(st.phone.replace(/\s/g, ''))}">${icon('phone')} Call</a><a class="mb-cta" href="${anchor('contact')}">${icon('calendar')} ${inst ? 'Enquire now' : 'Book a visit'}</a></div>`;
   if (sub && sub.page) {
     const pg = S.pages.find(p => p.slug === sub.page);
-    return `<div class="site" style="--c:${esc(st.color)}">${header}<section><div class="wrap">${pg ? `<div class="sh"><h2>${esc(pg.title)}</h2></div><div class="page-body">${esc(pg.body)}</div>` : '<h2>Page not found</h2>'}<p style="margin-top:28px"><a href="${base}">← Back to home</a></p></div></section>${footer}</div>`;
+    return `<div class="site" style="--c:${esc(st.color)}">${header}<section class="pg"><div class="wrap narrow">${pg ? `<p class="eyebrow">${esc(st.name)}</p><h1 class="pg-h">${esc(pg.title)}</h1><div class="page-body">${esc(pg.body)}</div>` : '<h1 class="pg-h">Page not found</h1><p>This page may have been removed.</p>'}<p class="back"><a class="btn-o" href="${base}">← Back to home</a></p></div></section>${footer}${mobileBar}</div>`;
   }
   const off = S.offerings.filter(o => o.active);
-  const notices = [...S.announcements].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+  const notices = [...S.announcements].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
   const wa = (st.whatsapp || '').replace(/\D/g, '');
+  const [bTop, bSub] = (st.heroBadge || '').split('|');
+  const feats = S.features || [];
+  const tms = S.testimonials || [];
+  const gal = S.gallery.slice(0, 5);
+  const heroImg = st.heroImg || (S.gallery.find(g => g.url) || {}).url;
   return `<div class="site" style="--c:${esc(st.color)}">${header}
-  <div class="hero"><div class="wrap"><div class="pill info" style="margin-bottom:14px">${esc(st.tagline)}</div><h1>${esc(st.heroTitle)}</h1><p>${esc(st.heroSub)}</p>
-    <div class="row"><a class="cta" href="${anchor('contact')}">${S.type === 'institute' ? 'Book a free demo class' : 'Book an appointment'}</a><a class="btn" href="tel:${esc(st.phone)}">📞 ${esc(st.phone)}</a></div>
-    ${stats ? `<div class="stats">${stats}</div>` : ''}</div></div>
-  <section id="s-offerings"><div class="wrap"><div class="sh"><h2>${S.type === 'institute' ? 'Courses & batches' : 'Our services'}</h2><p>${S.type === 'institute' ? 'Pick a batch that fits your schedule. Fees can be paid in instalments.' : 'Transparent fees. Walk-ins welcome, appointments preferred.'}</p></div>
-    <div class="cards">${off.map(o => `<div class="oc"><h3>${esc(o.name)}</h3><div class="meta">${S.type === 'institute' ? `${esc((o.days || '').replace(/,/g, ' · '))} · ${fmtTime(o.start)}–${fmtTime(o.end)}` : esc(o.duration)}${o.duration && S.type === 'institute' ? ` · ${esc(o.duration)}` : ''}</div><p style="margin:0;color:#475467">${esc(o.desc)}</p><div class="fee">${inr(o.fee)}</div><a href="${anchor('contact')}&i=${encodeURIComponent(o.name)}" style="font-weight:600">${S.type === 'institute' ? 'Enquire about this batch' : 'Book this'} →</a></div>`).join('')}</div></div></section>
-  <section class="alt"><div class="wrap grid g2"><div><div class="sh"><h2>About us</h2></div><p style="color:#475467;white-space:pre-wrap">${esc(st.about)}</p>${menuPages[0] ? `<a href="${pageLink(menuPages[0].slug)}" style="font-weight:600">Read more →</a>` : ''}</div>
-    <div><div class="sh"><h2>Notice board</h2></div>${notices.map(n => `<div class="notice"><div class="d">${fmtDate(n.date)}</div><b>${esc(n.title)}</b><div style="color:#475467;font-size:.95rem">${esc(n.body)}</div></div>`).join('') || '<p class="muted">No notices.</p>'}</div></div></section>
-  <section id="s-staff"><div class="wrap"><div class="sh"><h2>${S.type === 'institute' ? 'Meet our faculty' : 'Our doctors'}</h2></div><div class="cards">${S.staff.map(s => `<div class="oc fac"><div class="avatar">${esc(initials(s.name))}</div><h3>${esc(s.name)}</h3><div class="meta">${esc(s.role)}</div><p style="margin:0;color:#475467;font-size:.94rem">${esc(s.bio)}</p></div>`).join('')}</div></div></section>
-  <section id="s-gallery" class="alt"><div class="wrap"><div class="sh"><h2>Gallery</h2></div><div class="gal">${S.gallery.map(g => `<figure>${galTile(g)}${g.url ? `<figcaption>${esc(g.caption)}</figcaption>` : ''}</figure>`).join('')}</div></div></section>
-  <section id="s-contact"><div class="wrap contact"><div class="info"><div class="sh"><h2>Visit or contact us</h2><p>We usually reply within a few hours.</p></div>
-    <p>📍 ${esc(st.address)}</p><p>📞 <a href="tel:${esc(st.phone)}">${esc(st.phone)}</a></p><p>✉️ <a href="mailto:${esc(st.email)}">${esc(st.email)}</a></p><p>🕘 ${esc(st.hours)}</p>${wa ? `<p><a class="cta" href="https://wa.me/${wa}" target="_blank" rel="noopener">Chat on WhatsApp</a></p>` : ''}</div>
-    <form id="enq-form"><h3 style="margin-bottom:12px">${S.type === 'institute' ? 'Admission enquiry' : 'Request an appointment'}</h3>
-      <label class="f"><span>Your name</span><input type="text" name="name" required autocomplete="name"></label>
-      <div class="form-grid"><label class="f"><span>Phone</span><input type="tel" name="phone" required pattern="[0-9+ -]{8,15}" autocomplete="tel"></label><label class="f"><span>Email (optional)</span><input type="email" name="email" autocomplete="email"></label></div>
-      <label class="f"><span>Interested in</span><select name="interest"><option>General</option>${off.map(o => `<option ${sub && sub.i === o.name ? 'selected' : ''}>${esc(o.name)}</option>`).join('')}</select></label>
-      <label class="f"><span>Message</span><textarea name="message" style="min-height:70px" placeholder="${S.type === 'institute' ? 'Class, preferred batch timing…' : 'Preferred date/time, symptoms…'}"></textarea></label>
-      <button class="cta" type="submit" style="width:100%">Send</button><p class="small muted" id="enq-ok" style="margin:10px 0 0"></p></form></div></section>
-  ${footer}</div>`;
+  <section class="hero"><div class="wrap hero-g">
+    <div class="hero-copy"><p class="eyebrow">${icon('sparkle')}${esc(st.tagline)}</p><h1>${esc(st.heroTitle)}</h1><p class="lead">${esc(st.heroSub)}</p>
+      <div class="hero-cta"><a class="cta lg" href="${anchor('contact')}">${esc(ctaTxt)} ${icon('arrow')}</a><a class="btn-o lg" href="tel:${esc(st.phone.replace(/\s/g, ''))}">${icon('phone')} ${esc(st.phone)}</a></div>
+      ${tms.length ? `<div class="trust"><span class="stars">${icon('star')}${icon('star')}${icon('star')}${icon('star')}${icon('star')}</span><span>${inst ? 'Rated 4.9 by 300+ parents on Google' : 'Rated 4.8 by 1,200+ patients on Google'}</span></div>` : ''}</div>
+    ${heroImg ? `<div class="hero-art"><img src="${esc(heroImg)}" alt="${esc(st.name)}" width="1400" height="939" fetchpriority="high">${bTop ? `<div class="float-card">${icon(inst ? 'calendar' : 'clock')}<div><b>${esc(bTop)}</b>${bSub ? `<span>${esc(bSub)}</span>` : ''}</div></div>` : ''}</div>` : ''}
+  </div>${stats ? `<div class="wrap"><div class="stats">${stats}</div></div>` : ''}</section>
+  ${feats.length ? `<section class="feat"><div class="wrap"><div class="sh c"><p class="eyebrow">Why ${inst ? 'parents' : 'families'} choose us</p><h2>${inst ? 'Built around one student at a time' : 'Care that respects your time'}</h2></div>
+    <div class="f-grid">${feats.map(f => `<div class="f-item"><div class="f-ic">${icon(f.icon)}</div><h3>${esc(f.title)}</h3><p>${esc(f.body)}</p></div>`).join('')}</div></div></section>` : ''}
+  <section id="s-offerings" class="alt"><div class="wrap"><div class="sh"><p class="eyebrow">${inst ? 'Courses & batches' : 'Services & fees'}</p><h2>${inst ? 'Find the right batch' : 'What we can help with'}</h2><p>${inst ? 'Morning, evening and weekend batches. Fees can be paid in instalments.' : 'Clear fees, no surprises. Walk-ins welcome, appointments preferred.'}</p></div>
+    ${off.length ? `<div class="o-grid">${off.map((o, i) => `<article class="oc">${i === 0 ? `<span class="tag">${inst ? 'Most popular' : 'Most booked'}</span>` : ''}<h3>${esc(o.name)}</h3>
+      <ul class="o-meta">${inst ? `<li>${icon('calendar')}${esc((o.days || '').replace(/,/g, ', '))}</li><li>${icon('clock')}${fmtTime(o.start)} – ${fmtTime(o.end)}${o.duration ? ` · ${esc(o.duration)}` : ''}</li>` : `<li>${icon('clock')}${esc(o.duration || '')}</li>`}</ul>
+      <p>${esc(o.desc)}</p><div class="o-foot"><div class="fee"><b>${inr(o.fee)}</b><span>${inst ? 'full course' : 'per visit'}</span></div><a class="o-link" href="${anchor('contact')}&i=${encodeURIComponent(o.name)}" aria-label="${inst ? 'Enquire about' : 'Book'} ${esc(o.name)}">${inst ? 'Enquire' : 'Book'} ${icon('arrow')}</a></div></article>`).join('')}</div>` : `<div class="s-empty">${inst ? 'New batches will be announced here soon.' : 'Services will be listed here soon.'} <a href="${anchor('contact')}">Ask us directly →</a></div>`}</div></section>
+  ${tms.length ? `<section class="tm"><div class="wrap"><div class="sh c"><p class="eyebrow">${inst ? 'Results & reviews' : 'Patient stories'}</p><h2>${inst ? 'What our parents and students say' : 'What our patients say'}</h2></div>
+    <div class="t-grid">${tms.map(t => `<figure class="tc"><div class="stars">${icon('star')}${icon('star')}${icon('star')}${icon('star')}${icon('star')}</div><blockquote>${esc(t.body)}</blockquote><figcaption><span class="t-av" style="background:${colorFor(t.name)}">${esc(initials(t.name))}</span><span><b>${esc(t.name)}</b><small>${esc(t.role)}</small></span></figcaption></figure>`).join('')}</div></div></section>` : ''}
+  <section id="s-staff" class="alt"><div class="wrap"><div class="sh"><p class="eyebrow">${inst ? 'Faculty' : 'Doctors'}</p><h2>${inst ? 'Learn from teachers who stay' : 'Meet your doctors'}</h2></div>
+    ${S.staff.length ? `<div class="p-grid" style="--n:${Math.min(S.staff.length, 5)};--nt:${S.staff.length % 2 ? 3 : 2}">${S.staff.map(s => `<div class="pc"><div class="p-av" style="--a:${colorFor(s.name)}">${esc(initials(s.name.replace(/^(Dr|Col)\.\s*/, '')))}</div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div><p>${esc(s.bio)}</p></div>`).join('')}</div>` : `<div class="s-empty">Profiles coming soon.</div>`}</div></section>
+  ${gal.length ? `<section id="s-gallery"><div class="wrap"><div class="sh"><p class="eyebrow">Gallery</p><h2>${inst ? 'Inside the academy' : 'Inside the clinic'}</h2></div>
+    <div class="bento n${gal.length}">${gal.map(g => `<figure>${g.url ? `<img src="${esc(g.url)}" alt="${esc(g.caption)}" loading="lazy">` : `<div class="g-ph" style="--g:${esc(g.color || st.color)}">${icon('image')}</div>`}<figcaption>${esc(g.caption)}</figcaption></figure>`).join('')}</div></div></section>` : ''}
+  <section class="alt"><div class="wrap two"><div><div class="sh"><p class="eyebrow">About us</p><h2>${inst ? 'A small academy, by design' : 'A neighbourhood clinic, done right'}</h2></div><p class="about">${esc(st.about)}</p>${menuPages[0] ? `<a class="btn-o" href="${pageLink(menuPages[0].slug)}">Read our story ${icon('arrow')}</a>` : ''}</div>
+    <div><div class="sh"><p class="eyebrow">Notice board</p><h2>Latest updates</h2></div>${notices.length ? notices.map(n => `<div class="notice"><div class="n-date"><b>${new Date(n.date + 'T00:00').getDate()}</b><span>${new Date(n.date + 'T00:00').toLocaleDateString('en-IN', { month: 'short' })}</span></div><div><b>${esc(n.title)}</b><p>${esc(n.body)}</p></div></div>`).join('') : '<div class="s-empty">No notices right now.</div>'}</div></div></section>
+  <section id="s-contact"><div class="wrap contact"><div class="info"><div class="sh"><p class="eyebrow">${inst ? 'Admissions' : 'Appointments'}</p><h2>${inst ? 'Visit us or ask a question' : 'Book a visit'}</h2><p>Leave your number and we will call you back within a few hours, ${inst ? 'usually the same day' : 'or the same evening'}.</p></div>
+    <ul class="c-list"><li>${icon('pin')}<span>${esc(st.address)}</span></li><li>${icon('phone')}<a href="tel:${esc(st.phone.replace(/\s/g, ''))}">${esc(st.phone)}</a></li><li>${icon('mail')}<a href="mailto:${esc(st.email)}">${esc(st.email)}</a></li><li>${icon('clock')}<span>${esc(st.hours)}</span></li></ul>${wa ? `<p><a class="cta" href="https://wa.me/${wa}" target="_blank" rel="noopener">Chat on WhatsApp</a></p>` : ''}</div>
+    <div class="form-card"><form id="enq-form" novalidate><h3>${inst ? 'Admission enquiry' : 'Request an appointment'}</h3><p class="f-sub">${inst ? 'Takes 30 seconds. No spam, ever.' : 'We will confirm your slot by phone.'}</p>
+      <label class="f"><span>Your name</span><input type="text" name="name" required minlength="2" autocomplete="name" placeholder="${inst ? 'e.g. Priya Sharma' : 'e.g. Rakesh Gupta'}"><em class="err" data-for="name"></em></label>
+      <div class="form-grid"><label class="f"><span>Mobile number</span><input type="tel" name="phone" required inputmode="tel" autocomplete="tel" placeholder="10-digit mobile"><em class="err" data-for="phone"></em></label><label class="f"><span>Email <i>(optional)</i></span><input type="email" name="email" autocomplete="email" placeholder="you@example.com"><em class="err" data-for="email"></em></label></div>
+      <label class="f"><span>${inst ? 'Interested in' : 'Service'}</span><select name="interest"><option>${inst ? 'Not sure yet — please advise' : 'General enquiry'}</option>${off.map(o => `<option ${sub && sub.i === o.name ? 'selected' : ''}>${esc(o.name)}</option>`).join('')}</select></label>
+      <label class="f"><span>Message <i>(optional)</i></span><textarea name="message" rows="3" placeholder="${inst ? 'Class, school, preferred batch timing…' : 'Preferred date and time, symptoms…'}"></textarea></label>
+      <button class="cta block" type="submit">${inst ? 'Request a call back' : 'Request appointment'} ${icon('arrow')}</button></form>
+      <div class="f-ok" id="enq-ok" hidden>${icon('check')}<h3>Thank you, we have your details.</h3><p>${inst ? 'Our admissions team' : 'The front desk'} will call you shortly on the number you shared.</p><button class="btn-o" type="button" id="enq-again">Send another enquiry</button></div></div></div></section>
+  ${footer}${mobileBar}</div>`;
 }
 
 /* ---------------- router & binding ---------------- */
 let VIEW = {};
 function parseHash() {
-  const h = location.hash.replace(/^#/, '') || '/dashboard';
+  const h = location.hash.replace(/^#/, '') || '/site';
   const [path, qs] = h.split('?');
   const q = {}; (qs || '').split('&').filter(Boolean).forEach(kv => { const [k, v] = kv.split('='); q[decodeURIComponent(k)] = decodeURIComponent(v || ''); });
   return { parts: path.split('/').filter(Boolean), q };
@@ -623,7 +712,7 @@ let lastRoute = '';
 function render() {
   load();
   const { parts, q } = parseHash();
-  const route = parts[0] || 'dashboard';
+  const route = parts[0] || 'site';
   if (route !== lastRoute) { VIEW = {}; lastRoute = route; }
   Object.assign(VIEW, q);
   const app = $('#app');
@@ -645,15 +734,29 @@ function render() {
 }
 
 function bindSite(q) {
-  const m = $('#site-menu'); if (m) m.onclick = () => $('#site-links').classList.toggle('open');
+  const m = $('#site-menu'); if (m) m.onclick = () => { const o = $('#site-links').classList.toggle('open'); m.setAttribute('aria-expanded', o); };
+  $$('#site-links a').forEach(a => a.addEventListener('click', () => $('#site-links').classList.remove('open')));
   if (q.s) { const el = document.getElementById('s-' + q.s); if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30); }
-  const f = $('#enq-form');
-  if (f) f.onsubmit = e => {
-    e.preventDefault(); const d = formData(f);
+  const f = $('#enq-form'); if (!f) return;
+  const setErr = (n, msg) => { const e = f.querySelector(`[data-for="${n}"]`); const inp = f.elements[n]; if (e) e.textContent = msg || ''; if (inp) inp.setAttribute('aria-invalid', msg ? 'true' : 'false'); };
+  const check = d => {
+    const errs = {}; const digits = (d.phone || '').replace(/\D/g, '').replace(/^(91|0)(?=\d{10}$)/, '');
+    if (!d.name || d.name.trim().length < 2) errs.name = 'Please enter your name.';
+    if (!digits) errs.phone = 'Please enter a mobile number so we can call you back.'; else if (!/^[6-9]\d{9}$/.test(digits)) errs.phone = 'Enter a valid 10-digit Indian mobile number.';
+    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) errs.email = 'That email doesn’t look right.';
+    return { errs, digits };
+  };
+  ['name', 'phone', 'email'].forEach(n => f.elements[n].addEventListener('blur', () => { const { errs } = check(formData(f)); if (f.elements[n].value || n !== 'email') setErr(n, f.dataset.tried || f.elements[n].value ? errs[n] : ''); }));
+  f.onsubmit = e => {
+    e.preventDefault(); f.dataset.tried = '1'; const d = formData(f); const { errs, digits } = check(d);
+    ['name', 'phone', 'email'].forEach(n => setErr(n, errs[n]));
+    const first = Object.keys(errs)[0]; if (first) { f.elements[first].focus(); return; }
+    d.phone = digits; d.name = d.name.trim();
     load(); S.enquiries.unshift(Object.assign({ id: uid(), date: today(), status: 'New' }, d)); save();
-    f.reset(); $('#enq-ok').textContent = '✅ Thank you! We have received your enquiry and will call you back soon.';
+    f.reset(); delete f.dataset.tried; f.hidden = true; $('#enq-ok').hidden = false;
     try { if (window.parent !== window) window.parent.postMessage('icms:enquiry', '*'); } catch (err) {}
   };
+  const ag = $('#enq-again'); if (ag) ag.onclick = () => { $('#enq-ok').hidden = true; f.hidden = false; f.elements.name.focus(); };
 }
 
 function bindAdmin(route, parts) {
@@ -771,7 +874,7 @@ function bindSettings() {
   $$('[data-type]').forEach(b => b.onclick = () => { localStorage.setItem(KEY_TYPE, b.dataset.type); load(b.dataset.type); toast('Switched to ' + LABELS[b.dataset.type].kind); location.hash = '#/dashboard'; render(); });
   const rc = $('#rc-form'); rc.onsubmit = e => { e.preventDefault(); const d = formData(rc); S.settings.receiptFooter = d.receiptFooter; S.receiptSeq = d.receiptSeq || S.receiptSeq; save(); toast('Saved'); };
   $('#exp').onclick = () => download(`${S.settings.name.replace(/\W+/g, '-').toLowerCase()}-backup-${today()}.json`, JSON.stringify(S, null, 1), 'application/json');
-  $('#imp').onchange = e => { const file = e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = () => { try { const d = JSON.parse(r.result); if (!d.settings || !d.type) throw 0; localStorage.setItem('icms:data:' + d.type, JSON.stringify(d)); localStorage.setItem(KEY_TYPE, d.type); toast('Backup restored'); render(); } catch (err) { alert('That file is not a valid backup.'); } }; r.readAsText(file); };
+  $('#imp').onchange = e => { const file = e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = () => { try { const d = JSON.parse(r.result); if (!d.settings || !d.type) throw 0; d.v = 2; localStorage.setItem('icms:data:' + d.type, JSON.stringify(d)); localStorage.setItem(KEY_TYPE, d.type); toast('Backup restored'); render(); } catch (err) { alert('That file is not a valid backup.'); } }; r.readAsText(file); };
   $('#reset').onclick = () => { if (confirm('Reset all ' + L().kind.toLowerCase() + ' data to the demo sample?')) { localStorage.removeItem('icms:data:' + S.type); toast('Demo data restored'); render(); } };
 }
 function download(name, text, type) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
