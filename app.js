@@ -165,6 +165,7 @@ function seedClinic() {
 /* ---------------- store ---------------- */
 const KEY_TYPE = 'icms:type';
 let S;
+try { const m = new URLSearchParams(location.search).get('mode'); if (m === 'clinic' || m === 'institute') localStorage.setItem('icms:type', m); } catch (e) {}
 function curType() { return localStorage.getItem(KEY_TYPE) || 'institute'; }
 function load(type) {
   type = type || curType();
